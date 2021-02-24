@@ -29,7 +29,7 @@ export class AlunosComponent implements OnInit {
 
     voltar()
     {
-      this.alunoSelecionado = 0;
+      // this.alunoSelecionado = ;
     }
 
   constructor() { }

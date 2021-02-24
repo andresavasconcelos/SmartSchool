@@ -11,7 +11,7 @@ import { TitleComponent } from './title/title.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   // exports: [BsDropdownModule],
   providers: [],

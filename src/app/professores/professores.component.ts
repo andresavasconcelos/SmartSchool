@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Professor } from '../models/Professor';
 
 @Component({
@@ -8,8 +9,9 @@ import { Professor } from '../models/Professor';
 })
 export class ProfessoresComponent implements OnInit {
 
-  title = 'Professores';
-  // public professorSelecionado!: string;
+  public profForm!: FormGroup;
+  public title = 'Professores';
+  public textSimple!: string;
   public professorSelecionado!: Professor;
 
   public professores = [
@@ -20,17 +22,35 @@ export class ProfessoresComponent implements OnInit {
     {id: 5, nome: 'Alexandr', disciplina: 'Quimica'},
   ];
 
+  constructor(private fb: FormBuilder)
+  {
+    this.criarForm();
+  }
+
+  ngOnInit() {}
+
+  criarForm()
+  {
+    this.profForm = this.fb.group({
+      nome: [''],
+      disciplina: [''],
+    });
+  }
+
+  alunoSubmit(){
+    console.log(this.profForm.value);
+  }
+
   professorSelect(professor: Professor)
   {
     this.professorSelecionado = professor;
   }
 
-  voltar()
+  voltar(professor: Professor)
   {
-     this.professorSelecionado = 0;
+     this.professorSelecionado = professor;
+     professor == null;
   }
-  constructor() {}
 
-  ngOnInit() {}
 
 }
