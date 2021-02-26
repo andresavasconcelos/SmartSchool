@@ -11,11 +11,11 @@
         <app-title [title]="'Professor: ' + professorSelecionado.nome"></app-title>
       </div>
       <div class="mt-1">
-        <button class = "btn btn-outline-danger" (click)="voltar(professor)">Fechar</button>
+        <button class = "btn btn-outline-danger" (click)="voltar()">Fechar</button>
       </div>
     </div>
 
-    <form [formGroup]= "profForm" (submit)='profSubmit'>
+    <form [formGroup]= "profForm" (submit)='profSubmit()'>
       <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
         <input type="text" formControlName= "nome" class="form-control" id="formGroupExampleInput">
@@ -23,6 +23,10 @@
       <div class="form-group">
         <label for="formGroupExampleInput">Disciplina</label>
         <input type="text" formControlName= "disciplina" class="form-control" id="formGroupExampleInput">
+      </div>
+      <div class="form-group">
+        <hr>
+        <button class="btn btn-success" [disabled]="!profForm.valid">Enviar</button>
       </div>
     </form>
   </div>
@@ -34,16 +38,27 @@
     <table class="table">
       <thead class="thead-light">
         <tr>
+          <th scope="col">Visualizações</th>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
           <th scope="col">Disciplina</th>
+          <th scope="col">Opções</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let prof of professores" style="cursor: pointer;" (click)="professorSelect(prof)">
-          <th scope="row">{{prof.id}}</th>
+        <tr *ngFor="let prof of professores">
+          <td><button class="btn btn-sm btn-warning" (click)="professorSelect(prof)">Detalhes</button></td>
+          <td scope="row">{{prof.id}}</td>
           <td>{{prof.nome}}</td>
           <td>{{prof.disciplina}}</td>
+          <!-- td>.btn-group>btn.btn.btn-warning{detalhes} -->
+          <td>
+            <div class="btn-group">
+
+              <button class="btn btn-sm btn-primary">Editar</button>
+              <button class="btn btn-sm btn-danger">Excluir</button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
