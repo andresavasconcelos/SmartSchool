@@ -11,7 +11,7 @@
         <app-title [title]="'Professor: ' + professorSelecionado.nome"></app-title>
       </div>
       <div class="mt-1">
-        <button class = "btn btn-outline-danger" (click)="voltar()">Fechar</button>
+        <button class = "btn btn-outline-danger" (click)="voltar(professor)">Fechar</button>
       </div>
     </div>
 
@@ -55,8 +55,8 @@
           <td>
             <div class="btn-group">
 
-              <button class="btn btn-sm btn-primary">Editar</button>
-              <button class="btn btn-sm btn-danger">Excluir</button>
+              <button (click)="openModal(template)" class="btn btn-sm btn-primary">Alunos</button>
+              <button class="btn btn-sm btn-danger">Desativar</button>
             </div>
           </td>
         </tr>
@@ -65,3 +65,16 @@
   </div>
 
 </div>
+
+ <!-- ## MODAL ## -->
+
+<ng-template #template>
+  <div class="modal-body">
+    <app-alunos></app-alunos>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn pull-right btn-outline-danger" aria-label="Close" (click)="modalRef.hide()">
+      FECHAR
+    </button>
+  </div>
+</ng-template>
